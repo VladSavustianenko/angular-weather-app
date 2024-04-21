@@ -14,6 +14,11 @@ const appRoutes: Routes = [
     resolve: {
       forecast: forecastResolver,
     },
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   }
 ];
 export const routing: ModuleWithProviders<any> = RouterModule.forRoot(appRoutes);
