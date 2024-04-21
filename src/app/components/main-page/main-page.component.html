@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <app-forecast-form
+    (addLocation)="onAddLocation($event)"
+  ></app-forecast-form>
+  
+  <app-tabs>
+    <app-tab
+      *ngFor="let condition of (currentConditions$ | async)" 
+      [id]="condition.zip"
+      [title]="condition.zip + ' ' + condition?.data?.name"
+      (onClose)="removeCondition(condition.zip)"
+    >
+      <app-weather-conditions [condition]="condition" (onSelect)="navigateToForecast($event)"></app-weather-conditions>
+    </app-tab>
+  </app-tabs>
+</div>
